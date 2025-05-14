@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { IconAt } from "@tabler/icons-react";
 import {TextInput} from './textInput'
 
 interface SignupProps {
@@ -65,6 +66,7 @@ export const Signup: React.FC<SignupProps> = ({ onSubmit }: SignupProps) => {
             onChange={(e)=> setNickename(e.target.value)}
             required={true}
             error={error.nickname}
+            icon={<IconAt size='0.8rem'/>}
             />
             <TextInput
             className="signup"

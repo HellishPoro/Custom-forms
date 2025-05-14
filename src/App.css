@@ -60,3 +60,22 @@
   color: red;
   margin-top: 0.25rem;
 }
+
+
+.textInput-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px;
+  color: #999;
+  pointer-events: none;
+}
+
+.textInput.with-icon {
+  padding-left: 30px; 
+}
+

@@ -1,5 +1,6 @@
 import { useState } from "react"
-import {TextInput} from './textInput'
+import {TextInput} from '../ui/TextInput'
+import {EMAIL_REGEX, PASSWORD_REGEX} from '../constants/regexConstants'
 
 interface SigninProps {
     onSubmit: (data: {email: string, password: string}) => void
@@ -11,25 +12,22 @@ export const Signin = ({onSubmit}: SigninProps) => {
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
-
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        if(!emailRegex.test(email)) {
+        if(!EMAIL_REGEX.test(email)) {
             setEmailError('Invalid email format')
         }else{
             setEmailError('')
         }
 
-        if(!passwordRegex.test(password)){
+        if(!PASSWORD_REGEX.test(password)){
             setPasswordError('Password must be 8-20 characters long, contain at least one uppercase letter, one number and one special character')
         }else{
             setPasswordError('')
         }
 
-        if(emailRegex.test(email) && passwordRegex.test(password)){
+        if(EMAIL_REGEX.test(email) && PASSWORD_REGEX.test(password)){
         onSubmit({email, password})
         }
     }

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { IconAt } from "@tabler/icons-react";
-import {TextInput} from './textInput'
+import {TextInput} from '../ui/TextInput'
+import {EMAIL_REGEX, PASSWORD_REGEX} from '../constants/regexConstants'
 
 interface SignupProps {
     onSubmit: (values: {
@@ -22,18 +23,15 @@ export const Signup: React.FC<SignupProps> = ({ onSubmit }: SignupProps) => {
 
     const [error, setError] = useState<{[key: string]: string}>({})
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
-
     const validate = ()=>{
         const newErrors = {} as { [key: string]: string }
 
         if(!name.trim()) return setError({name: 'Имя не может быть пустым'})
         if(!nickname.trim()) return setError({nickname: 'Ник не может быть пустым'})
         if(!email.trim()) return setError({email: 'Email не может быть пустым'})
-        if(!emailRegex.test(email)) return setError({email: 'Некорректный email'})
+        if(!EMAIL_REGEX.test(email)) return setError({email: 'Некорректный email'})
         if(!password.trim()) return setError({password: 'Пароль не может быть пустым'})
-        if(!passwordRegex.test(password)) return setError({password: 'Пароль должен содержать от 8 до 20 символов, хотя бы одну заглавную букву, одну цифру и один специальный символ'})
+        if(!PASSWORD_REGEX.test(password)) return setError({password: 'Пароль должен содержать от 8 до 20 символов, хотя бы одну заглавную букву, одну цифру и один специальный символ'})
         if(password !== confirmPassword) return setError({confirmPassword: 'Пароли не совпадают'})
 
         setError(newErrors)

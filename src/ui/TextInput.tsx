@@ -19,7 +19,7 @@ export const TextInput: React.FC<TextInputProps>= ({label, error, required, id, 
                 {required && '*'}
             </label>
             )}
-<div className="textInput-wrapper">
+            <div className="textInput-wrapper">
                 {icon && <span className="input-icon">{icon}</span>}
                 <input
                     id={id}

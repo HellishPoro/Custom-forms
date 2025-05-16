@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { IconAt } from "@tabler/icons-react";
 import {TextInput} from '../ui/TextInput'
-import {EMAIL_REGEX, PASSWORD_REGEX} from '../constants/regexConstants'
+import {EMAIL_REGEX, PASSWORD_REGEX} from '../constants/RegexConstants'
 
 interface SignupProps {
     onSubmit: (values: {

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import {TextInput} from '../ui/TextInput'
-import {EMAIL_REGEX, PASSWORD_REGEX} from '../constants/regexConstants'
+import {EMAIL_REGEX, PASSWORD_REGEX} from '../constants/RegexConstants'
 
 interface SigninProps {
     onSubmit: (data: {email: string, password: string}) => void
